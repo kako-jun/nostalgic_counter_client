@@ -39,8 +39,8 @@ class NostalgicCounter {
   // class methods
   static async getCounter(id: string) {
     let counter = null;
-    // const url = `http://localhost/api/counter?id=${id}`;
-    const url = `https://nostalgic-counter-api.llll-ll.com/api/counter?id=${id}`;
+    // const url = `http://localhost/api/counter?id=${id}&ex`;
+    const url = `https://nostalgic-counter-api.llll-ll.com/api/counter?id=${id}&ex`;
     try {
       const res = await fetch(url).catch(() => null);
       if (res) {
@@ -171,8 +171,8 @@ class NostalgicCounter {
       html = html.replace(/{next}/g, `<span class="nc-next">${next}</span>`);
     }
 
-    html = html.replace(/{count}/g, `<span class="nc-count">${total}</span>`);
-    html = html.replace(/{raw_count}/g, String(total));
+    html = html.replace(/{total}/g, `<span class="nc-total">${total}</span>`);
+    html = html.replace(/{raw_total}/g, String(total));
     html = `<span class="nostalgic-counter">${html}</span>`;
 
     return html;
