@@ -39,8 +39,8 @@ class NostalgicCounter {
   // class methods
   static async getCounter(id: string) {
     let counter = null;
-    const url = `http://localhost/api/counter/${id}`;
-    // const url = `https://nostalgic-counter-api.llll-ll.com/api/counter/${id}`;
+    // const url = `http://localhost/api/counter?id=${id}`;
+    const url = `https://nostalgic-counter-api.llll-ll.com/api/counter?id=${id}`;
     try {
       const res = await fetch(url).catch(() => null);
       if (res) {
