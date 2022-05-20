@@ -216,7 +216,7 @@ const onLoad = async () => {
   for (const counterEle of counterEles) {
     const id = counterEle.dataset.id || "default";
     const formatting = counterEle.dataset.formatting || "{total}";
-    const zeroPaddingLength = counterEle.dataset.zeroPaddingLength || 0;
+    const zeroPaddingLength = Number(counterEle.dataset.zeroPaddingLength) || 0;
     const imageDirPath = counterEle.dataset.imageDirPath || "";
     const imageExt = counterEle.dataset.imageExt || ".gif";
 
@@ -237,8 +237,17 @@ const onLoad = async () => {
   const kiribanEle = document.querySelector<HTMLAnchorElement>(".nostalgic_counter_kiriban");
   if (kiribanEle) {
     const id = kiribanEle.dataset.id || "default";
-    const normalMessages = kiribanEle.dataset.normalMessages || [];
-    const specialMessages = kiribanEle.dataset.specialMessages || [];
+
+    let normalMessages: NormalMessageType[] = [];
+    if (kiribanEle.dataset.normalMessages) {
+      normalMessages = JSON.parse(kiribanEle.dataset.normalMessages);
+    }
+
+    let specialMessages: SpecialMessageType[] = [];
+    if (kiribanEle.dataset.specialMessages) {
+      specialMessages = JSON.parse(kiribanEle.dataset.specialMessages);
+    }
+
     const noKiribanMessage = kiribanEle.dataset.noKiribanMessage || "";
     const noMoreKiribanMessage = kiribanEle.dataset.noMoreKiribanMessage || "";
     const nextKiribanMessage = kiribanEle.dataset.nextKiribanMessage || "";
